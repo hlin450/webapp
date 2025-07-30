@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scoutable</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <h1 class="logo">Scoutable</h1>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="hero-content">
+        <h2>Find Your Ideal Spot in the Mission District</h2>
+        <p>
+          Search based on what matters to you—gyms, cafés, safety, and more.
+        </p>
+        <a href="#search" class="btn-primary">Start Exploring</a>
+      </div>
+    </header>
+
+    <section class="search-section" id="search">
+      <div class="container">
+        <h3>Search & Rank Your Top Priorities</h3>
+        <form class="search-form">
+          <label for="address">Enter an Address:</label>
+          <input
+            type="text"
+            id="address"
+            name="address"
+            placeholder="e.g., 123 Valencia St"
+            class="address-input"
+          />
+
+          <label>Rank Your Top 3 Priorities:</label>
+          <select name="priority1" class="priority-select">
+            <option value="">-- Priority #1 --</option>
+            <option value="cafes">Cafés</option>
+            <option value="parks">Parks</option>
+            <option value="gym">Gym</option>
+            <option value="safety">Safety</option>
+            <option value="restaurants">Restaurants</option>
+            <option value="grocery">Grocery Stores</option>
+          </select>
+          <select name="priority2" class="priority-select">
+            <option value="">-- Priority #2 --</option>
+            <option value="cafes">Cafés</option>
+            <option value="parks">Parks</option>
+            <option value="gym">Gym</option>
+            <option value="safety">Safety</option>
+            <option value="restaurants">Restaurants</option>
+            <option value="grocery">Grocery Stores</option>
+          </select>
+          <select name="priority3" class="priority-select">
+            <option value="">-- Priority #3 --</option>
+            <option value="cafes">Cafés</option>
+            <option value="parks">Parks</option>
+            <option value="gym">Gym</option>
+            <option value="safety">Safety</option>
+            <option value="restaurants">Restaurants</option>
+            <option value="grocery">Grocery Stores</option>
+          </select>
+
+          <button type="submit" class="btn-primary">Submit Preferences</button>
+        </form>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2025 Scoutable. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
