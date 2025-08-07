@@ -17,7 +17,7 @@
       <div class="hero-content">
         <h2>Find Your Ideal Spot in the Mission District</h2>
         <p>
-          Search based on what matters to you—gyms, cafés, safety, and more.
+          Search based on what matters to you — gyms, cafés, safety, and more.
         </p>
         <a href="#search" class="btn-primary">Start Exploring</a>
       </div>
@@ -37,16 +37,20 @@
           />
 
           <label>Rank Your Top 3 Priorities:</label>
-          <select name="priority1" class="priority-select">
+          <select
+            id="priority1"
+            name="priority1"
+            class="priority-select"
+            required
+          >
             <option value="">-- Priority #1 --</option>
             <option value="cafes">Cafés</option>
             <option value="parks">Parks</option>
             <option value="gym">Gym</option>
-            <option value="safety">Safety</option>
             <option value="restaurants">Restaurants</option>
             <option value="grocery">Grocery Stores</option>
           </select>
-          <select name="priority2" class="priority-select">
+          <select name="priority2" class="priority-select" required>
             <option value="">-- Priority #2 --</option>
             <option value="cafes">Cafés</option>
             <option value="parks">Parks</option>
@@ -55,7 +59,7 @@
             <option value="restaurants">Restaurants</option>
             <option value="grocery">Grocery Stores</option>
           </select>
-          <select name="priority3" class="priority-select">
+          <select name="priority3" class="priority-select" required>
             <option value="">-- Priority #3 --</option>
             <option value="cafes">Cafés</option>
             <option value="parks">Parks</option>
@@ -65,15 +69,19 @@
             <option value="grocery">Grocery Stores</option>
           </select>
 
-          <button type="submit" class="btn-primary">Submit Preferences</button>
+          <button id="submit" type="submit" class="btn-primary">
+            Submit Preferences
+          </button>
         </form>
       </div>
     </section>
+    <section id="output"></section>
 
     <footer class="footer">
       <div class="container">
         <p>&copy; 2025 Scoutable. All rights reserved.</p>
       </div>
     </footer>
+    <script src="./script.js"></script>
   </body>
 </html>
