@@ -36,37 +36,48 @@
             class="address-input"
           />
 
-          <label>Rank Your Top 3 Priorities:</label>
+          <label
+            >Rank Your Top 3 Priorities (Most Important to Least
+            Important):</label
+          >
           <select
             id="priority1"
             name="priority1"
             class="priority-select"
             required
           >
-            <option value="">-- Priority #1 --</option>
-            <option value="cafes">Cafés</option>
+            <option value="">First Choice</option>
+            <option value="cafes" id="cafes">Cafés</option>
             <option value="parks">Parks</option>
             <option value="gym">Gym</option>
             <option value="restaurants">Restaurants</option>
-            <option value="grocery">Grocery Stores</option>
+            <option value="grocery" id="grocery">Grocery Stores</option>
           </select>
-          <select name="priority2" class="priority-select" required>
-            <option value="">-- Priority #2 --</option>
-            <option value="cafes">Cafés</option>
+          <select
+            id="priority2"
+            name="priority2"
+            class="priority-select"
+            required
+          >
+            <option value="">Second Choice</option>
+            <option value="cafes" id="cafes">Cafés</option>
             <option value="parks">Parks</option>
             <option value="gym">Gym</option>
-            <option value="safety">Safety</option>
             <option value="restaurants">Restaurants</option>
-            <option value="grocery">Grocery Stores</option>
+            <option value="grocery" id="grocery">Grocery</option>
           </select>
-          <select name="priority3" class="priority-select" required>
-            <option value="">-- Priority #3 --</option>
-            <option value="cafes">Cafés</option>
+          <select
+            name="priority3"
+            id="priority3"
+            class="priority-select"
+            required
+          >
+            <option value="">Third Choice</option>
+            <option value="cafes" id="cafes">Cafés</option>
             <option value="parks">Parks</option>
             <option value="gym">Gym</option>
-            <option value="safety">Safety</option>
             <option value="restaurants">Restaurants</option>
-            <option value="grocery">Grocery Stores</option>
+            <option value="grocery" id="grocery">Grocery Stores</option>
           </select>
 
           <button id="submit" type="submit" class="btn-primary">
