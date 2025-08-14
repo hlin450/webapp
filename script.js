@@ -49,6 +49,8 @@ function renderOutput(records) {
     <article>
       <header>
         <h2>${record.fields.Name}</h2>
+      </header> 
+      <section class ="details">
         ${
           record.fields.Address
             ? `<p><strong>Address:</strong> ${record.fields.Address}</p>`
@@ -84,8 +86,12 @@ function renderOutput(records) {
              ? `<p><strong>Cuisine:</strong> ${record.fields.Cuisine}</p>`
              : ""
          }
-         ${record.fields.image ? `${record.fields.image}` : ""}
-      </header>
+         ${
+           record.fields.image
+             ? `<p><img src= "${record.fields.image}" alt="${record.fields.Name}"</p>`
+             : ""
+         }
+      </section>
     </article>
     `;
   });
