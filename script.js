@@ -88,6 +88,12 @@ function renderOutput(records) {
               ? `<p><strong>Cuisine:</strong> ${record.fields.Cuisine}</p>`
               : ""
           }
+          ${
+           record.fields.image
+             ? `<p><img src= "${record.fields.image}" alt="${record.fields.Name}"</p>`
+             : ""
+         }
+
         </div>
       </div>
     `;
