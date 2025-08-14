@@ -14,6 +14,9 @@ tableId3="tblxeoFfq957i8QRy"
 #Restaurants
 tableId4="tblKjAt0vj4jAXxs8"
 
+#Grocery
+
+
 curl https://api.airtable.com/v0/appbWMhKH8Qs0uMgb/${tableId4} \
 -H "Authorization: Bearer ${token}"
 

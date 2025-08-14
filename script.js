@@ -43,58 +43,56 @@ function getTableIdFromSelection(selection) {
 }
 
 function renderOutput(records) {
-  let innerHTML = "";
+  let innerHTML = '<div class="cards-container">';
   records.forEach((record) => {
+    const imgSrc =
+      record.fields.image ||
+      "https://via.placeholder.com/300x200?text=No+Image";
     innerHTML += `
-    <article>
-      <header>
-        <h2>${record.fields.Name}</h2>
-      </header> 
-      <section class ="details">
-        ${
-          record.fields.Address
-            ? `<p><strong>Address:</strong> ${record.fields.Address}</p>`
-            : ""
-        }
-        ${
-          record.fields.Hours
-            ? `<p><strong>Hours:</strong> ${record.fields.Hours}</p>`
-            : ""
-        }
-        ${
-          record.fields.Description
-            ? `<p><strong><em>Description:</em></strong> ${record.fields.Description}</p>`
-            : ""
-        }
-       ${
-         record.fields.Prices
-           ? `<p><strong>Price Range:</strong> ${record.fields.Prices}</p>`
-           : ""
-       }
-        ${
-          record.fields.Ratings
-            ? `<p><strong>Ratings:</strong> ${record.fields.Ratings}</p>`
-            : ""
-        }
-         ${
-           record.fields.Number
-             ? `<p><strong>Phone Number:</strong> ${record.fields.Number}</p>`
-             : ""
-         }
-         ${
-           record.fields.Cuisine
-             ? `<p><strong>Cuisine:</strong> ${record.fields.Cuisine}</p>`
-             : ""
-         }
-         ${
-           record.fields.image
-             ? `<p><img src= "${record.fields.image}" alt="${record.fields.Name}"</p>`
-             : ""
-         }
-      </section>
-    </article>
+      <div class="card">
+        <img src="${imgSrc}" alt="${record.fields.Name}">
+        <div class="card-body">
+          <h4>${record.fields.Name || "Untitled"}</h4>
+          ${
+            record.fields.Address
+              ? `<p><strong>Address:</strong> ${record.fields.Address}</p>`
+              : ""
+          }
+          ${
+            record.fields.Hours
+              ? `<p><strong>Hours:</strong> ${record.fields.Hours}</p>`
+              : ""
+          }
+          ${
+            record.fields.Description
+              ? `<p>${record.fields.Description}</p>`
+              : ""
+          }
+          ${
+            record.fields.Prices
+              ? `<p><strong>Price Range:</strong> ${record.fields.Prices}</p>`
+              : ""
+          }
+          ${
+            record.fields.Ratings
+              ? `<p><strong>Ratings:</strong> ${record.fields.Ratings}</p>`
+              : ""
+          }
+          ${
+            record.fields.Number
+              ? `<p><strong>Phone:</strong> ${record.fields.Number}</p>`
+              : ""
+          }
+          ${
+            record.fields.Cuisine
+              ? `<p><strong>Cuisine:</strong> ${record.fields.Cuisine}</p>`
+              : ""
+          }
+        </div>
+      </div>
     `;
   });
+  innerHTML += "</div>";
   return innerHTML;
 }
 
