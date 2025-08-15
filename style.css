@@ -231,11 +231,6 @@ label {
   border-left: 20px solid #000000; /* colored bar for emphasis */
   margin-top: 20px; /* space above each heading */
 }
-.fixed-size {
-  height: 300px;
-  width: 400px;
-}
-
 .cards-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -246,7 +241,7 @@ label {
 .card {
   background: #ffffff;
   border-radius: 8px;
-  box-shadow: 0 6px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 6px 5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -264,12 +259,6 @@ label {
   display: flex;
   flex-direction: column;
 }
-
-.card-body h4 {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.25rem;
-}
-
 .card-body p {
   margin: 0.25rem 0;
   font-size: 0.95rem;
@@ -277,4 +266,10 @@ label {
 
 .card-body strong {
   color: #0d86ff;
+}
+.clickable-card:hover {
+  box-shadow: 0 8px 20px rgba(52, 152, 219, 0.17);
+  transform: translateY(-4px) scale(1.025);
+  transition: box-shadow 0.18s, transform 0.18s;
+  cursor: pointer;
 }

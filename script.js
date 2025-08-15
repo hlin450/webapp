@@ -18,6 +18,8 @@ const priority1 = document.getElementById("priority1");
 const priority2 = document.getElementById("priority2");
 const priority3 = document.getElementById("priority3");
 
+
+
 // Helper
 function capitalize(text) {
   if (!text) return "";
@@ -42,65 +44,80 @@ function getTableIdFromSelection(selection) {
   }
 }
 
-function renderOutput(records) {
+// 1. renderOutput function (partial for gyms - make sure this is included)
+function renderOutput(records, type) {
   let innerHTML = '<div class="cards-container">';
   records.forEach((record) => {
     const imgSrc =
       record.fields.image ||
       "https://via.placeholder.com/300x200?text=No+Image";
-    innerHTML += `
-      <div class="card">
-        <img src="${imgSrc}" alt="${record.fields.Name}">
-        <div class="card-body">
-          <h4>${record.fields.Name || "Untitled"}</h4>
-          ${
-            record.fields.Address
-              ? `<p><strong>Address:</strong> ${record.fields.Address}</p>`
-              : ""
-          }
-          ${
-            record.fields.Hours
-              ? `<p><strong>Hours:</strong> ${record.fields.Hours}</p>`
-              : ""
-          }
-          ${
-            record.fields.Description
-              ? `<p>${record.fields.Description}</p>`
-              : ""
-          }
-          ${
-            record.fields.Prices
-              ? `<p><strong>Price Range:</strong> ${record.fields.Prices}</p>`
-              : ""
-          }
-          ${
-            record.fields.Ratings
-              ? `<p><strong>Ratings:</strong> ${record.fields.Ratings}</p>`
-              : ""
-          }
-          ${
-            record.fields.Number
-              ? `<p><strong>Phone:</strong> ${record.fields.Number}</p>`
-              : ""
-          }
-          ${
-            record.fields.Cuisine
-              ? `<p><strong>Cuisine:</strong> ${record.fields.Cuisine}</p>`
-              : ""
-          }
-          ${
-           record.fields.image
-             ? `<p><img src= "${record.fields.image}" alt="${record.fields.Name}"</p>`
-             : ""
-         }
-
+    if (type === "gym") {
+      innerHTML += `
+        <div class="card">
+          <img src="${imgSrc}" alt="${record.fields.Name}">
+          <div class="card-body">
+            <h4>${record.fields.Name || "Untitled"}</h4>
+            <button class="gym-btn" data-gym-id="${
+              record.id
+            }" style="margin:10px 1rem; padding:8px 12px; background-color:#3498db; border:none; color:white; border-radius:4px; cursor:pointer;">
+              View Details →
+            </button>
+            <div class="gym-description" id="gym-desc-${
+              record.id
+            }" style="display:none; margin-top:10px; padding-top:10px; border-top:1px solid #ddd;">
+              <!-- Description inserted dynamically -->
+            </div>
+          </div>
         </div>
-      </div>
-    `;
+      `;
+    } else {
+      // non-gym cards as clickable anchors
+      innerHTML += `
+        <a href="#" class="card clickable-card" style="text-decoration:none; color:inherit;">
+          <img src="${imgSrc}" alt="${record.fields.Name}">
+          <div class="card-body">
+            <h4>${record.fields.Name || "Untitled"}</h4>
+            ${
+              record.fields.Address
+                ? `<p><strong>Address:</strong> ${record.fields.Address}</p>`
+                : ""
+            }
+            ${
+              record.fields.Hours
+                ? `<p><strong>Hours:</strong> ${record.fields.Hours}</p>`
+                : ""
+            }
+            ${
+              record.fields.Prices
+                ? `<p><strong>Price Range:</strong> ${record.fields.Prices}</p>`
+                : ""
+            }
+            ${
+              record.fields.Ratings
+                ? `<p><strong>Ratings:</strong> ${record.fields.Ratings}</p>`
+                : ""
+            }
+            ${
+              record.fields.Number
+                ? `<p><strong>Phone:</strong> ${record.fields.Number}</p>`
+                : ""
+            }
+            ${
+              record.fields.Cuisine
+                ? `<p><strong>Cuisine:</strong> ${record.fields.Cuisine}</p>`
+                : ""
+            }
+          </div>
+        </a>
+      `;
+    }
   });
   innerHTML += "</div>";
   return innerHTML;
+
 }
+
+
 
 // Fetch records for a given table
 const fetchTable = async (baseId, tableId, token) => {
@@ -124,6 +141,7 @@ const fetchTable = async (baseId, tableId, token) => {
 
 // Main submit handler
 async function handleSubmit(event) {
+  
   event.preventDefault(); // stop form reload
 
   const selectedOption1 = priority1.value;
@@ -166,3 +184,24 @@ async function run() {
 
 document.addEventListener("DOMContentLoaded", run);
 submit.addEventListener("click", handleSubmit);
+
+output.innerHTML = outputHTML;
+
+// Attach click event listeners for gym buttons
+const gymButtons = document.querySelectorAll(".gym-btn");
+gymButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const gymId = button.getAttribute("data-gym-id");
+    const detailDiv = document.getElementById(`gym-detail-${gymId}`);
+
+    // Toggle visibility
+    if (detailDiv.style.display === "none" || detailDiv.style.display === "") {
+      detailDiv.style.display = "block";
+      button.textContent = "Hide Details ↑";
+    } else {
+      detailDiv.style.display = "none";
+      button.textContent = "View Details →";
+    }
+  });
+});
+
